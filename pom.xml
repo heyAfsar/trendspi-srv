@@ -37,6 +37,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-core -->
+		<dependency>
+		    <groupId>org.mongodb</groupId>
+		    <artifactId>mongodb-driver-core</artifactId>
+		    <version>4.8.2</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
