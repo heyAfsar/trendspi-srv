@@ -12,19 +12,19 @@ import com.crashtech.trendspisrv.modal.Stocks;
 import com.crashtech.trendspisrv.repository.StocksRepository;
 
 @RestController
-@RequestMapping("/getlatesttrends")
+@RequestMapping("/api")
 public class MainController {
 
 	@Autowired
 	private StocksRepository employeeRepository;
 
-	@PostMapping("/")
+	@PostMapping("/push/trend")
 	public ResponseEntity<?> addEmployee(@RequestBody Stocks employee) {
 		Stocks save = this.employeeRepository.save(employee);
 		return ResponseEntity.ok(save);
 	}
 
-	@GetMapping("/")
+	@GetMapping("/get/trends")
 	public ResponseEntity<?> getEmployee() {
 		return ResponseEntity.ok(this.employeeRepository.findAll());
 	}
