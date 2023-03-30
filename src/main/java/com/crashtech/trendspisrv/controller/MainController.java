@@ -1,5 +1,7 @@
 package com.crashtech.trendspisrv.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,17 +18,23 @@ import com.crashtech.trendspisrv.repository.StocksRepository;
 public class MainController {
 
 	@Autowired
-	private StocksRepository employeeRepository;
+	private StocksRepository stocksRepository;
 
 	@PostMapping("/push/trend")
-	public ResponseEntity<?> addEmployee(@RequestBody Stocks employee) {
-		Stocks save = this.employeeRepository.save(employee);
+	public ResponseEntity<?> addStock(@RequestBody Stocks stocks) {
+		Stocks save = this.stocksRepository.save(stocks);
 		return ResponseEntity.ok(save);
 	}
-
+	
+	@PostMapping("/push/trends")
+    public ResponseEntity<List<Stocks>> addStocks(@RequestBody List<Stocks> stocks) {
+        List<Stocks> savedStocks = stocksRepository.saveAll(stocks);
+        return ResponseEntity.ok(savedStocks);
+    }
+	
 	@GetMapping("/get/trends")
-	public ResponseEntity<?> getEmployee() {
-		return ResponseEntity.ok(this.employeeRepository.findAll());
+	public ResponseEntity<?> getStocks() {
+		return ResponseEntity.ok(this.stocksRepository.findAll());
 	}
 
 }

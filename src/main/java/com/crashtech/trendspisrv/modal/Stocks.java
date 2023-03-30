@@ -1,10 +1,12 @@
 package com.crashtech.trendspisrv.modal;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "stockdetails")
 public class Stocks {
 
+	@Id
 	private String id;
 	private String name;
 	private int stars;
