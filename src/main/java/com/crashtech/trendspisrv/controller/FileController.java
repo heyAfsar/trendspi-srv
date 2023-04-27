@@ -27,6 +27,7 @@ public class FileController {
         return new ResponseEntity<>(fileService.addFile(file), HttpStatus.OK);
     }
 
+
     @GetMapping("/view/file/{id}")
     public ResponseEntity<ByteArrayResource> view(@PathVariable String id) throws IOException {
         LoadFile loadFile = fileService.downloadFile(id);
@@ -36,6 +37,7 @@ public class FileController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" + loadFile.getFilename() + "\"")
                 .body(new ByteArrayResource(loadFile.getFile()));
     }
+
 
     @GetMapping("/download/file/{id}")
     public ResponseEntity<ByteArrayResource> download(@PathVariable String id) throws IOException {
